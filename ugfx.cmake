@@ -127,10 +127,10 @@ target_sources(ugfx
       ${UGFX_SRC_DRIVERS}
 )
 
-target_include_directories(ugfx PUBLIC "inc/ugfx")
-target_include_directories(ugfx PUBLIC "${UGFX_DIR}")
-target_include_directories(ugfx PUBLIC "${UGFX_DIR}/3rdparty/tinygl-0.4-ugfx/include")
-target_include_directories(ugfx PUBLIC "${UGFX_INC_DRIVERS}")
+target_include_directories(ugfx PUBLIC inc/ugfx)
+target_include_directories(ugfx PUBLIC ${UGFX_DIR})
+target_include_directories(ugfx PUBLIC ${UGFX_DIR}/3rdparty/tinygl-0.4-ugfx/include)
+target_include_directories(ugfx PUBLIC ${UGFX_INC_DRIVERS})
 
 if(TARGET freertos)
   target_link_libraries(ugfx freertos)
