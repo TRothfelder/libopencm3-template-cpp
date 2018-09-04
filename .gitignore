@@ -1,0 +1,10 @@
+#ignore build dirs
+release/
+debug/
+build/
+
+#ignore eclipse settings
+.project
+.cproject
+.settings/
+
