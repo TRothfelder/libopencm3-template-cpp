@@ -22,5 +22,4 @@ void Clock::setup( void ) {
 	systick_interrupt_enable();
 	/* Start counting. */
 	systick_counter_enable();
-
 }
