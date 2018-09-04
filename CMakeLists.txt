@@ -63,17 +63,15 @@ target_link_libraries(${PROJECT_NAME} ${LIBOPENCM3_LIB} c m nosys)
 #include freertos
 #dont forget to check freertos.cmake if you change the microcontroller
 include(freertos.cmake)
-target_link_libraries(${PROJECT_NAME} freertos)
 
 #include Segger Sysview
 #must be included after freertos due to dependency to freertos lib
 include(sysview.cmake)
-target_link_libraries(${PROJECT_NAME} sysview)
 
 #include uGFX
 #must be included after freertos due to dependency to freertos lib
 include(ugfx.cmake)
-target_link_libraries(${PROJECT_NAME} ugfx)
+
 
 #inlcude utils, view binary size and export to hex file
 include(utils.cmake)

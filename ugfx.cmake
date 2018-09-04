@@ -135,3 +135,5 @@ target_include_directories(ugfx PUBLIC ${UGFX_INC_DRIVERS})
 if(TARGET freertos)
   target_link_libraries(ugfx freertos)
 endif(TARGET freertos)
+
+target_link_libraries(${PROJECT_NAME} ugfx)

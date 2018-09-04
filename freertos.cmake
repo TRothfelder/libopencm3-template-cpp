@@ -29,3 +29,5 @@ target_sources(freertos
 target_include_directories(freertos PUBLIC ${FREERTOS_DIR}/Source/include)
 target_include_directories(freertos PUBLIC inc/freertos)
 target_include_directories(freertos PUBLIC ${FREERTOS_DIR}/Source/portable/${FREERTOS_COMPILER}/${FREERTOS_PORT})
+
+target_link_libraries(${PROJECT_NAME} freertos)
