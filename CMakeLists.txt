@@ -70,6 +70,11 @@ target_link_libraries(${PROJECT_NAME} freertos)
 include(sysview.cmake)
 target_link_libraries(${PROJECT_NAME} sysview)
 
+#include uGFX
+#must be included after freertos due to dependency to freertos lib
+include(ugfx.cmake)
+target_link_libraries(${PROJECT_NAME} ugfx)
+
 #inlcude utils, view binary size and export to hex file
 include(utils.cmake)
 firmware_size(${PROJECT_NAME})
