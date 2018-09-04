@@ -15,18 +15,17 @@ extern "C" {
 	#endif //SEGGER_SYSVIEW_USE
 }
 
-#include "tasks/ledblink.hpp"
+#include "tasks/mytasks.hpp"
 
-xTaskHandle ledblinkTaskHandle = NULL;
-
-void ledblink_task(void *arg) {
+void MyTasks::ledblink(void *arg) {
 	//unsigned istr;
-	(void)arg;
+	( void ) arg;
+	uint16_t *gpio = ( uint16_t *) arg;
 
 	for (;;) {
-		gpio_toggle(GPIOD,GPIO13 | GPIO15);
+		gpio_toggle(GPIOD, *gpio);
 		#if defined(DEBUG)
-			gpio_toggle(GPIOD, GPIO12 | GPIO14);
+			gpio_toggle(GPIOD, *gpio << 1); /* GPIO12 is uint16_t */ /* GPIOD is uint32_t */
 		#endif
 		#if defined(SEGGER_SYSVIEW_USE)
 			SEGGER_SYSVIEW_Print("Ledblink task executed.");

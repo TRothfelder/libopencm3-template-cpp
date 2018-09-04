@@ -8,6 +8,9 @@
 #ifndef INC_CONFIG_GPIO_H_
 #define INC_CONFIG_GPIO_H_
 
-void setupGPIO(void);
+class Gpio {
+  public:
+    static void setup( void );
+};
 
 #endif /* INC_CONFIG_GPIO_H_ */

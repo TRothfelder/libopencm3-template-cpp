@@ -34,12 +34,15 @@ set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/stm32f4-discovery.ld)
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T ${LINKER_SCRIPT} -Wl,--gc-sections -flto -nostartfiles")
 
 #if we run in debug, define the DEBUG preprocessor define and debug optimization
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG -Og -g")
-set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DDEBUG -Og -g")
+# !!! sysview does not run without optimization !!!!
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG -g3 -ggdb3 -Os")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DDEBUG -g3 -ggdb3 -Os")
 
 #if we run in release set following flags:
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Os")
+# !!! sysview does not run without optimization !!!!
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Os")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Os")
+set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
 
 #adds executable
 add_executable(${PROJECT_NAME} "")
@@ -48,6 +51,7 @@ target_sources(${PROJECT_NAME} PRIVATE
   "src/main.cpp"
   "src/config/clock.cpp"
   "src/config/gpio.cpp"
+  "src/tasks/mytasks.cpp"
   "src/tasks/init.cpp"
   "src/tasks/ledblink.cpp"
 )
