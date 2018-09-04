@@ -20,3 +20,5 @@ if(TARGET freertos)
   target_link_libraries(sysview freertos)
   target_link_libraries(freertos sysview)
 endif(TARGET freertos)
+
+target_link_libraries(${PROJECT_NAME} sysview)
