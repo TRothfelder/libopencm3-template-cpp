@@ -1,8 +1,8 @@
 #uncomment the version you want to compile in
 #set(FREERTOS_DIR lib/FreeRTOSv9)
-#set(FREERTOS_DIR lib/FreeRTOSv9_patched)
+set(FREERTOS_DIR lib/FreeRTOSv9_patched)
 #set(FREERTOS_DIR lib/FreeRTOSv10.0.1)
-set(FREERTOS_DIR lib/FreeRTOSv10.0.1_patched)
+#set(FREERTOS_DIR lib/FreeRTOSv10.0.1_patched)
 
 #setup FreeRTOS port, compiler and heapmanager
 set(FREERTOS_PORT ARM_CM4F)

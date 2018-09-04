@@ -14,21 +14,22 @@ extern "C"{
 	#endif //SEGGER_SYSVIEW_USE
 }
 
-#include "tasks/init.hpp"
+//#include "tasks/init.hpp"
 #include "config/clock.hpp"
 #include "config/gpio.hpp"
+#include "tasks/mytasks.hpp"
 
 /*
  * Main program:
  */
 extern "C" int main(void) {
-  setupClock();
-  setupGPIO();
+  Clock::setup();
+  Gpio::setup();
 
 	#if defined(SEGGER_SYSVIEW_USE)
 		SEGGER_SYSVIEW_Conf();
 	#endif
-	xTaskCreate(init_task,"INIT",3096,NULL,0, &initTaskHandle);
+	xTaskCreate(MyTasks::init,"INIT",3096,NULL,0, &MyTasks::initTaskHandle);
 
 	vTaskStartScheduler();
 

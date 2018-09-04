@@ -8,6 +8,9 @@
 #ifndef INC_CONFIG_CLOCK_H_
 #define INC_CONFIG_CLOCK_H_
 
-void setupClock(void);
+class Clock {
+  public:
+    static void setup( void );
+};
 
 #endif /* INC_CONFIG_CLOCK_H_ */
