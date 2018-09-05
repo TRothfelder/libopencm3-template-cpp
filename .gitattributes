@@ -1,2 +1,5 @@
 lib/* linguist-vendored
+lib/**/* linguist-vendored
+src/segger/* linguist-vendored
+src/freertos/* linguist-vendored
 
