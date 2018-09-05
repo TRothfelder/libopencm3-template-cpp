@@ -128,4 +128,6 @@ standard names. */
 	#include "SEGGER_SYSVIEW_FreeRTOS.h"
 #endif //SEGGER_SYSVIEW_USE
 
+#include "freertoshelper.h"
+
 #endif /* FREERTOS_CONFIG_H */
