@@ -19,13 +19,15 @@ extern "C" {
 
 void MyTasks::ledblink(void *arg) {
 	//unsigned istr;
-	( void ) arg;
-	uint16_t *gpio = ( uint16_t *) arg;
+	freertosArgs_t *args = (freertosArgs_t *) arg;
+
+	uint32_t port = *( uint32_t *) args->args[0];
+	uint16_t gpio = *( uint16_t *) args->args[1];
 
 	for (;;) {
-		gpio_toggle(GPIOD, *gpio);
+		gpio_toggle(port, gpio);
 		#if defined(DEBUG)
-			gpio_toggle(GPIOD, *gpio << 1); /* GPIO12 is uint16_t */ /* GPIOD is uint32_t */
+			gpio_toggle(port, gpio << 1); /* GPIO12 is uint16_t */ /* GPIOD is uint32_t */
 		#endif
 		#if defined(SEGGER_SYSVIEW_USE)
 			SEGGER_SYSVIEW_Print("Ledblink task executed.");
