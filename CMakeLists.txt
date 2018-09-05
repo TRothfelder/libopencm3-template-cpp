@@ -31,7 +31,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${MCU_FLAGS} -std=c11 -Wall -Wextra -fdata-s
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${MCU_FLAGS} -std=c++17 -Wall -Wextra -fdata-sections -ffunction-sections -flto -fno-rtti -fno-exceptions")
 #setup
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/stm32f4-discovery.ld)
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T ${LINKER_SCRIPT} -Wl,--gc-sections -flto -nostartfiles")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T ${LINKER_SCRIPT} -Wl,--gc-sections -Wl,-Map=${PROJECT_NAME}.map -flto -nostartfiles")
 
 #if we run in debug, define the DEBUG preprocessor define and debug optimization
 # !!! sysview does not run without optimization !!!!
@@ -46,8 +46,19 @@ set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
 
 #adds executable
 add_executable(${PROJECT_NAME} "")
+set_target_properties(
+    ${PROJECT_NAME}
+    PROPERTIES
+        LINK_DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.map"
+)
+add_custom_command(
+    OUTPUT "${PROJECT_NAME}.map"
+    COMMAND "${CMAKE_COMMAND}" -E touch "${PROJECT_NAME}.map"
+)
+
 #define source files
 target_sources(${PROJECT_NAME} PRIVATE
+  "${PROJECT_NAME}.map"
   "src/main.cpp"
   "src/config/clock.cpp"
   "src/config/gpio.cpp"
@@ -70,6 +81,7 @@ include(sysview.cmake)
 
 #include uGFX
 #must be included after freertos due to dependency to freertos lib
+#for settings see ugfx.cmake file itself
 include(ugfx.cmake)
 
 

@@ -1,4 +1,5 @@
 #uncomment the version you want to compile in
+#patched version are for use with sysview
 #set(FREERTOS_DIR lib/FreeRTOSv9)
 set(FREERTOS_DIR lib/FreeRTOSv9_patched)
 #set(FREERTOS_DIR lib/FreeRTOSv10.0.1)
