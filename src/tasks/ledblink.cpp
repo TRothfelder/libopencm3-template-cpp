@@ -32,6 +32,6 @@ void MyTasks::ledblink(void *arg) {
 		#if defined(SEGGER_SYSVIEW_USE)
 			SEGGER_SYSVIEW_Print("Ledblink task executed.");
 		#endif
-		vTaskDelay(250 / portTICK_RATE_MS);
+		vTaskDelay(500 / portTICK_RATE_MS);
 	}
 }
