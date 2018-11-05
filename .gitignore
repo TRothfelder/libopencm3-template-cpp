@@ -2,9 +2,15 @@
 release/
 debug/
 build/
+cmake*/
 
 #ignore eclipse settings
 .project
 .cproject
 .settings/
 
+#ignore clion settings
+.idea/
+
+#ignore the generatet gdbinit file
+gdbinit_generated

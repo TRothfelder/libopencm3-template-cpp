@@ -87,5 +87,9 @@ include(ugfx.cmake)
 
 #inlcude utils, view binary size and export to hex file
 include(utils.cmake)
+
+#include gdbinit, creates gdbinit file for startup of gdb
+include(gdbinit.cmake)
+
 firmware_size(${PROJECT_NAME})
 generate_object(${PROJECT_NAME} .hex ihex)
