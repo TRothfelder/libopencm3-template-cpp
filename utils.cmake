@@ -34,6 +34,7 @@ function(generate_object target suffix type)
         "${CMAKE_CURRENT_BINARY_DIR}/${target}${CMAKE_EXECUTABLE_SUFFIX}" 
 "${CMAKE_CURRENT_BINARY_DIR}/${target}${suffix}"
     )
+    set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES "${target}${suffix}")
 endfunction()
 
 # Add custom linker script to the linker flags
