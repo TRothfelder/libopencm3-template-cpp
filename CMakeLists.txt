@@ -93,4 +93,3 @@ include(gdbinit.cmake)
 
 firmware_size(${PROJECT_NAME})
 generate_object(${PROJECT_NAME} .hex ihex)
-set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES "${PROJECT_NAME}.hex")
