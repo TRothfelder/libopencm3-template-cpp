@@ -8,6 +8,7 @@ cmake*/
 .project
 .cproject
 .settings/
+.cache/
 
 #ignore clion settings
 .idea/
