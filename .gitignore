@@ -2,7 +2,6 @@
 release/
 debug/
 build/
-cmake*/
 
 #ignore eclipse settings
 .project
