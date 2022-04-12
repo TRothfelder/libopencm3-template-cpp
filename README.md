@@ -109,13 +109,14 @@ See the cmake files for comments on how to tweak your build.
 Start own project with this one as base
 ---------------------------------------
 
-Using a STM32F4 Discovery or the STM32F407VGT6: you just need to edit CMakeLists.txt to use the stm32f4.cmake and add your custom sources and includes.
+Using a STM32F4 Discovery or the STM32F407VGT6: you just need to edit CMakeLists.txt to use the stm32f407vg.cmake, the stm32f407 library and add your custom sources and includes.
+The .cmake files create link libraries with the name of the processor by default. For a "stm32f407vg" this would be: "stm32f407vg", "stm32f407vg_freertos" and "stm32f407vg_freertoslts".
 Using a Bluepill Board: just add your sources and includes.
 
 Other Platform/CPU:
 You need to edit the following cmake files:
-  - CmakeLists.txt
   - add a processor.cmake in cmakes folder
+  - CmakeLists.txt
   - maybe create a toolchain file
 
 
