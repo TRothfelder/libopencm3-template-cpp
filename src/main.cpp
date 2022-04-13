@@ -40,7 +40,8 @@ extern "C" int main(void) {
 
 	vTaskStartScheduler();
 
-  for (;;); // Should never get here
+  for (;;){
+  }// Should never get here
 
 	return 0;
 }
