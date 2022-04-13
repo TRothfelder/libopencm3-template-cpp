@@ -1,7 +1,7 @@
 set(libopencm3_TARGET stm32/f4) #only compile libopencm3 library for target
 set(libopencm3_LIB libopencm3_stm32f4.a) #set linked libopencm3 library
 set(libopencm3_MCU stm32f407vg) #set mcu 
-set(MCU_FLAGS -flto -ffunction-sections -fdata-sections -static -nostartfiles -fno-common -mcpu=cortex-m3 -mtune=cortex-m3 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16)
+set(MCU_FLAGS -flto -ffunction-sections -fdata-sections -static -nostartfiles -fno-common -mcpu=cortex-m4 -mtune=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16)
 
 set(libopencm3_SOURCE_DIR ${CMAKE_SOURCE_DIR}/libs/libopencm3)
 set(libopencm3_LDSCRIPT ${libopencm3_SOURCE_DIR}/ld/linker.ld.S)
