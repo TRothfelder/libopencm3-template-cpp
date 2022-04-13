@@ -32,7 +32,7 @@ target_compile_options(${FIRMWARE_FILE_NAME} PRIVATE
     -fno-exceptions
   >
   $<$<CONFIG:Debug>:
-    -Os
+    -O0
     -g3 
     -ggdb
   >
