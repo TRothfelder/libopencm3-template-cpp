@@ -1,13 +1,13 @@
 set(libopencm3_TARGET stm32/f1) #only compile libopencm3 library for target
 set(libopencm3_LIB libopencm3_stm32f1.a) #set linked libopencm3 library
 set(libopencm3_MCU stm32f103c8) #set mcu 
-set(MCU_FLAGS -static -nostartfiles -fno-common -mcpu=cortex-m3 -mtune=cortex-m3 -mthumb -mfloat-abi=soft)
+set(MCU_FLAGS -flto -ffunction-sections -fdata-sections -static -nostartfiles -fno-common -mcpu=cortex-m3 -mtune=cortex-m3 -mthumb -mfloat-abi=soft)
 
 set(libopencm3_SOURCE_DIR ${CMAKE_SOURCE_DIR}/libs/libopencm3)
 set(libopencm3_LDSCRIPT ${libopencm3_SOURCE_DIR}/ld/linker.ld.S)
 
 # create a target to build libopencm3 -- only for the target we need
-add_custom_target(libopencm3 make CFLAGS="-flto" TARGETS=${libopencm3_TARGET} WORKING_DIRECTORY ${libopencm3_SOURCE_DIR})
+add_custom_target(libopencm3 make CFLAGS="-flto -ffunction-sections -fdata-sections" TARGETS=${libopencm3_TARGET} WORKING_DIRECTORY ${libopencm3_SOURCE_DIR})
 
 execute_process(
   COMMAND ${libopencm3_SOURCE_DIR}/scripts/genlink.py ${libopencm3_SOURCE_DIR}/ld/devices.data ${libopencm3_MCU} DEFS
